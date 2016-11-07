@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class UserController < ApplicationController
 
   helpers do
     def logged_in?
