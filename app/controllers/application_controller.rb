@@ -1,6 +1,6 @@
 require './config/environment'
 
-class ApplicaionController < Sinatra::Base
+class ApplicationController < Sinatra::Base
 
   configure do
     set :views, 'app/views'
