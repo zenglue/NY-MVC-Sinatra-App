@@ -16,11 +16,10 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "name"
   end
 
-  create_table "programs", force: :cascade do |t|
-    t.string "organization_name"
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
     t.string "url"
-    t.string "address"
-    t.string "telephone_number"
+    t.string "contact_info"
   end
 
   create_table "users", force: :cascade do |t|
