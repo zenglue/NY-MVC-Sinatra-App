@@ -1,4 +1,5 @@
 class UserExperiance < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :organization
+  has_many :organization_experiances
+  has_many :users, through: :organization_experiances
+  has_many :organizations, through: :organization_experiances
 end
