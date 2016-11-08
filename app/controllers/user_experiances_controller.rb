@@ -28,5 +28,11 @@ class UserExperiancesController < ApplicationController
     end
   end
 
+#post experiances new
+
+#patch experiances/:id/edit flash/action
+
+#delete experiances/:id/delete flash/action
+
 
 end
