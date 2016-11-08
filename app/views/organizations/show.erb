@@ -1,0 +1,7 @@
+<h1><%= @orgainization.name %></h1>
+<ul>
+  <li><% @organization.user_experiances.each do |user_experiance| %>
+    <%= user_experiance.user.user_name %>: <%= user_experiance.content %>
+  </li>
+</ul>
+<% end %>
