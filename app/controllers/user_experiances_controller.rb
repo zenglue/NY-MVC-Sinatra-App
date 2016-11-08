@@ -16,6 +16,7 @@ class UserExperiancesController < ApplicationController
     else
 #add session error message
       redirect '/users/login'
+    end
   end
 
   get '/experiances/:id/edit' do
@@ -25,6 +26,7 @@ class UserExperiancesController < ApplicationController
     else
 #add session error message
       redirect '/users/login'
+    binding.pry
     end
   end
 
