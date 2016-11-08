@@ -4,7 +4,7 @@ class OrganizationController < ApplicationController
     @organization = Organization.all
     erb :"/organizations/index"
   end
-  
+
   get 'organizations/:id' do
     @organization = Organization.find(params[:id])
     erb :"/organizations/show"
