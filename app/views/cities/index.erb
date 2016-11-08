@@ -2,11 +2,12 @@
 <ul>
   <li><% @cities.each do |city| %>
     <%= city.name %>
-  </li>
     <ul>
       <li><% city.organizations.each do |organization| %>
         <a href="/organizations/<%= organization.id %>"><%= organization.name %></a>
       </li>
     </ul>
-    <% end %>
-    <% end %>
+  </li>
+</ul>
+<% end %>
+<% end %>
