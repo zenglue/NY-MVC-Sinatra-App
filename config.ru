@@ -8,4 +8,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use CityController
+use OrganizationController
+use UserController
 run ApplicationController
