@@ -42,8 +42,17 @@ class ExperiancesController < ApplicationController
     if (params[:needs_met_rating] != nil ||
       params[:accessibilty_rating] != nil ||
       params[:organization_response_rating] != nil ||
-      params[:experiance_content] 
-      !params[:experiance_content].empty? || !params[:advice_content].empty?
+      !params[:experiance_content].empty? ||
+      !params[:advice_content].empty?)
+
+      @experiance = UserExperiance.new(neeeds_met_rating: params[:needs_met_rating],
+      accessibilty_rating: params[:accessibilty_rating],
+      organization_response_rating: params[:organization_response_rating],
+      experiance_content: params[:experiance_content],
+      advice_content: params[:advice_content])
+
+      @experiance.save
+
   end
 
 #patch experiances/:id/edit flash/action
