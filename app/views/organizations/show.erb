@@ -1,8 +1,8 @@
 <h1 align='center'><%= @organization.name %></h1>
 <h2 align='center'><%= @organization.contact_info %></h2>
 <ul>
-  <li><% @organization.user_experiances.each do |user_experiance| %>
-    <%= user_experiance.user.user_name %>: <%= user_experiance.content %>
+  <li><% @organization.experiances.each do |experiance| %>
+    <%= experiance.user.username %>: <%= experiance.content %>
   </li>
 </ul>
 <% end %>

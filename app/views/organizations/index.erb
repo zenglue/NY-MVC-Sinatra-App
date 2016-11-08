@@ -1,9 +1,9 @@
 <ul>
   <li><% @organizations.each do |organization| %>
   <a href="/organizations/#{organization.id}">
-  <% organization.user_experiances.count.sort_by.reverse! do |a| %>
+  <% organization.experiances.count.sort_by.reverse! do |a| %>
   <%= a[:count].name %></a></br>
-  Number of Personal Experiances with the organization: <%= organization.user_experiances.count %>
+  Number of Personal Experiances with the organization: <%= organization.experiances.count %>
   </li>
 </ul>
 <% end %>

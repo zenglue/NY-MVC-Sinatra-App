@@ -1,4 +1,4 @@
-class UserExperiancesController < ApplicationController
+class ExperiancesController < ApplicationController
 
   get '/experiances/new' do
     if logged_in?
@@ -11,8 +11,8 @@ class UserExperiancesController < ApplicationController
 
   get '/experiances/:id' do
     if logged_in?
-      @experiance = UserExperiance.find(params[:id])
-      erb :"/user_experiances/show"
+      @experiance = OrganizationExperiance.find(params[:id])
+      erb :"/experiances/show"
     else
 #add session error message
       redirect '/users/login'
@@ -20,9 +20,9 @@ class UserExperiancesController < ApplicationController
   end
 
   get '/experiances/:id/edit' do
-    @experiance = UserExperiance.find(params[:id])
+    @experiance = OrganizationExperiance.find(params[:id])
     if logged_in? && @experiance.user_id == current_user.id
-      erb :"/user_experiances/edit"
+      erb :"/experiances/edit"
     else
 #add session error message
       redirect '/users/login'
