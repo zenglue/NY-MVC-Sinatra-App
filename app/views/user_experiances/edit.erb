@@ -1,0 +1,5 @@
+<form action="/experiances/<%=@experiance.id%>/edit" method='post'>
+  <input id='hidden' type='hidden' name='_method' value='patch'>
+  <input type='text' name='content' value='<%=@experiance.content%>'><br/>
+  <button type='submit' value='submit'>Submit</button>
+</form>
