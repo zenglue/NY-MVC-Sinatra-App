@@ -1,0 +1,7 @@
+<h1 align='center'>All Organizaions In NY</h1>
+<ul>
+  <li><% @cities.each do |city| %>
+    <%= city.name %></li>
+    <ul>
+      <li><% city.programs.each do |program| %>
+        <a href=<%= program.name
