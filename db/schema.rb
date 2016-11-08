@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108175331) do
+ActiveRecord::Schema.define(version: 20161108180602) do
+
+  create_table "organization_experiances", force: :cascade do |t|
+    t.integer "oganization_id"
+    t.integer "user_id"
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -20,8 +25,12 @@ ActiveRecord::Schema.define(version: 20161108175331) do
   end
 
   create_table "user_experiances", force: :cascade do |t|
-    t.integer "oganization_id"
-    t.integer "user_id"
+    t.integer "needs_met_rating"
+    t.integer "accessibility_rating"
+    t.integer "organization_response_rating"
+    t.integer "overall_experiance_rating"
+    t.string  "experiance_content"
+    t.string  "advice_content"
   end
 
   create_table "users", force: :cascade do |t|
