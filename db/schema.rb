@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 20161108000306) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -22,10 +22,9 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "contact_info"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "user_accounts", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password"
   end
-
 end
