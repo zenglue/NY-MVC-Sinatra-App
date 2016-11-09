@@ -21,19 +21,33 @@ class UserController < ApplicationController
     redirect "login"
   end
 
-#get signup/flash session message
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :"/users/home"
+  end
 
+  post '/signup' do
+    if params[:username].empty? || params[:email].empty? || params[:password].empty?
+      #flash notice[:session] "All fields must be filled"
+      redirect "/signup"
 
-#get login/flash session message
+    else
+      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+      sesssion[:id] = @user.id
+      @user.save
+      #flash notice[:session] "Account successfuly created!"
+      redirect "/organizations"
+    end
+  end
 
-#get logout/clear session/flash session message
-
-#get users/:slug
-
-#post signup...all fields filled, flash success/or error
-
-#post login...athuneticate, flash error
-
-
-
+  post '/login' do
+    @user = User.find(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:id] = @user.id
+      redirect "/organizations"
+    else
+      #flash notice[:session] "Wrong username or password"
+      redirect "/login"
+    end
+  end
 end
