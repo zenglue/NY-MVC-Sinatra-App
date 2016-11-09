@@ -2,7 +2,6 @@ class UserExperianceController < ApplicationController
 
   get '/user_experiances/new' do
     if logged_in?
-      @organization = Organization.find(params[:id])
       erb :"/user_experiances/new"
     else
 #add session error message
@@ -30,18 +29,7 @@ class UserExperianceController < ApplicationController
     end
   end
 
-  # get '/user_experiances/:id/delete' do
-  #   if logged_in? && @experiance.user_id == current_user.id
-  #
-  # end
 
-#post experiances new
-# "needs_met_rating"
-# "accessibility_rating"
-# "organization_response_rating"
-# "overall_experiance_rating"
-# "experiance_content"
-# "advice_content"
 
   post '/user_experiances/new' do
     if (
@@ -85,6 +73,18 @@ class UserExperianceController < ApplicationController
       #flash session error message
       redirect "/login"
     end
+  end
+
+  delete '/user_experiances/:id/delete' do
+    @experiance = Experiance.find(params[:id])
+    if logged_in? && @experiance.user_id == current_user.id
+      @experiance.delete
+      redirect "/organizations"
+    else
+      #flash session not logged_in message
+      redirect "/organizations"
+    end
+
   end
 
 end
