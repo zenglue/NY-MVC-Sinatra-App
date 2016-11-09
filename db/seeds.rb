@@ -1,9 +1,9 @@
 #name, city, url, contact_info
 organization_list = {
-  "CAMBA" => {
-    :city => "Brooklyn",
-    :url => "https://www.camba.org",
-    :contact_info => "1720 Church Ave., 2nd Floor, Brooklyn, NY 11226, tel: 718-282-2500"
+  name: "CAMBA" =>
+  city: "Brooklyn",
+  url: "https://www.camba.org",
+  :contact_info => "1720 Church Ave., 2nd Floor, Brooklyn, NY 11226, tel: 718-282-2500"
   },
   "Refugee Resettlement Program/Catholic Charities, Diocese of Brooklyn" => {
     :city => "Brooklyn",

@@ -78,10 +78,7 @@ class UserExperianceController < ApplicationController
       #flash session error message
       redirect "/login"
     end
-
-
-
-#patch experiances/:id/edit flash/action
+  end
 
 #delete experiances/:id/delete flash/action
 
