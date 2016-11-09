@@ -2,6 +2,7 @@ class UserExperianceController < ApplicationController
 
   get '/user_experiances/new' do
     if logged_in?
+      @organization = Organization.find(params[:id])
       erb :"/user_experiances/new"
     else
 #add session error message
@@ -45,7 +46,7 @@ class UserExperianceController < ApplicationController
       !params[:experiance_content].empty? ||
       !params[:advice_content].empty?)
 
-      @organization = Organization.find(params[:id])
+      # @organization = Organization.find(params[:id])
       @experiance = UserExperiance.new(
       neeeds_met_rating: params[:needs_met_rating],
       accessibilty_rating: params[:accessibilty_rating],
@@ -56,6 +57,8 @@ class UserExperianceController < ApplicationController
       # org_experiance = OrganizationExperiance.new
       # org_experiance.user_id =  current_user.id
       # org_experiance.org_id = ##Organization.id
+      Organization.all.each do
+        if
       @experiance.organization_id = @organization.id
       @experiance.user_id = current_user.id
       @experiance.save
