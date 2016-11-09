@@ -26,7 +26,6 @@ class UserExperianceController < ApplicationController
     else
 #add session error message
       redirect '/users/login'
-    binding.pry
     end
   end
 
@@ -63,6 +62,24 @@ class UserExperianceController < ApplicationController
       redirect '/user_expreriance/#{@experiance.id}'
     end
   end
+
+  patch '/user_experiance/:id/edit' do
+    if logged_in? && @experiance.id == current_user.id
+      @experiance = UserExperiance.find(params [:id])
+      @experiance.update(
+      needs_met_rating: params[:needs_met_rating],
+      accessibility_rating: params[:accessibilty_rating],
+      organization_response_rating: params[:organization_response_rating],
+      experiance: params[:experiance_content],
+      advice_content: params[:advice_content])
+      #flash session update sucessful
+      redirect "/organizations"
+    else
+      #flash session error message
+      redirect "/login"
+    end
+
+
 
 #patch experiances/:id/edit flash/action
 

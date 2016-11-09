@@ -2,8 +2,8 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect "/organizations"
-    else
+    #   redirect "/organizations"
+    # else
       erb :"/users/signup"
     end
   end
