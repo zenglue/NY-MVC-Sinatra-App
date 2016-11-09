@@ -49,12 +49,12 @@ class ExperiancesController < ApplicationController
       accessibilty_rating: params[:accessibilty_rating],
       organization_response_rating: params[:organization_response_rating],
       experiance_content: params[:experiance_content],
-      advice_content: params[:advice_content],)
+      advice_content: params[:advice_content])
 
       org_experiance = OrganizationExperiance.new
       org_experiance.user_id =  current_user.id
       org_experiance.org_id = ###Organization.id
-      @experiance.id = org_experiance.id 
+      @experiance.id = org_experiance.id
       @experiance.save
 
       redirect '/expreriance/#{@experiance.id}'
