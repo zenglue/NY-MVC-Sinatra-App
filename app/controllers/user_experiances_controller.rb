@@ -22,12 +22,17 @@ class UserExperianceController < ApplicationController
 
   get '/user_experiances/:id/edit' do
     @experiance = UserExperiance.find(params[:id])
-    if logged_in? && @experiance.id == current_user.id
+    if logged_in? && @experiance.user_id == current_user.id
       erb :"/user_experiances/edit"
     else
 #add session error message
       redirect '/users/login'
     end
+  end
+
+  get '/user_experiances/:id/delete' do
+    if logged_in? && @experiance.user_id == current_user.id
+
   end
 
 #post experiances new
@@ -46,10 +51,10 @@ class UserExperianceController < ApplicationController
       !params[:experiance_content].empty? ||
       !params[:advice_content].empty?)
 
-      # @organization = Organization.find(params[:id])
+      @organization = Organization.find(params[:id])
       @experiance = UserExperiance.new(
-      neeeds_met_rating: params[:needs_met_rating],
-      accessibilty_rating: params[:accessibilty_rating],
+      needs_met_rating: params[:needs_met_rating],
+      accessibility_rating: params[:accessibilty_rating],
       organization_response_rating: params[:organization_response_rating],
       experiance_content: params[:experiance_content],
       advice_content: params[:advice_content])
@@ -57,8 +62,7 @@ class UserExperianceController < ApplicationController
       # org_experiance = OrganizationExperiance.new
       # org_experiance.user_id =  current_user.id
       # org_experiance.org_id = ##Organization.id
-      Organization.all.each do
-        if
+
       @experiance.organization_id = @organization.id
       @experiance.user_id = current_user.id
       @experiance.save
@@ -67,7 +71,7 @@ class UserExperianceController < ApplicationController
   end
 
   patch '/user_experiance/:id/edit' do
-    if logged_in? && @experiance.id == current_user.id
+    if logged_in? && @experiance.user_id == current_user.id
       @experiance = UserExperiance.find(params [:id])
       @experiance.update(
       needs_met_rating: params[:needs_met_rating],
@@ -82,8 +86,5 @@ class UserExperianceController < ApplicationController
       redirect "/login"
     end
   end
-
-#delete experiances/:id/delete flash/action
-
 
 end
