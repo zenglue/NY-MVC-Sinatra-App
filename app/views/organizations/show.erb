@@ -1,10 +1,12 @@
 <h1 align='center'><%= @organization.name %></h1>
 <h2 align='center'><%= @organization.contact_info %></h2>
 <ul>
-  <li><% @organization.user_experiances.each do |experiance| %>
+  <li><% UserExperiance.all.each do |experiance| %>
+    <% if experiance.ogranization_id = @organization.id %>
     <%= experiance.user.username %>: <%= experiance.content %>
   </li>
 </ul>
+<% end %>
 <% end %>
 
 <!-- link to add new experiance -->
