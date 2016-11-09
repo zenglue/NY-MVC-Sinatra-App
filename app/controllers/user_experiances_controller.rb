@@ -30,10 +30,10 @@ class UserExperianceController < ApplicationController
     end
   end
 
-  get '/user_experiances/:id/delete' do
-    if logged_in? && @experiance.user_id == current_user.id
-
-  end
+  # get '/user_experiances/:id/delete' do
+  #   if logged_in? && @experiance.user_id == current_user.id
+  #
+  # end
 
 #post experiances new
 # "needs_met_rating"
