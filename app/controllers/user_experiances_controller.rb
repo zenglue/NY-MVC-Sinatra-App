@@ -1,6 +1,6 @@
-class ExperianceController < ApplicationController
+class UserExperianceController < ApplicationController
 
-  get '/experiances/new' do
+  get '/user_experiances/new' do
     if logged_in?
       erb :"/user_experiances/new"
     else
@@ -9,20 +9,20 @@ class ExperianceController < ApplicationController
     end
   end
 
-  get '/experiances/:id' do
+  get '/user_experiances/:id' do
     if logged_in?
       @experiance = UserExperiance.find(params[:id])
-      erb :"/experiances/show"
+      erb :"/user_experiances/show"
     else
 #add session error message
       redirect '/users/login'
     end
   end
 
-  get '/experiances/:id/edit' do
+  get '/user_experiances/:id/edit' do
     @experiance = UserExperiance.find(params[:id])
     if logged_in? && @experiance.id == current_user.id
-      erb :"/experiances/edit"
+      erb :"/user_experiances/edit"
     else
 #add session error message
       redirect '/users/login'
@@ -38,7 +38,7 @@ class ExperianceController < ApplicationController
 # "experiance_content"
 # "advice_content"
 
-  post '/experiances/new' do
+  post '/user_experiances/new' do
     if (params[:needs_met_rating] != nil ||
       params[:accessibilty_rating] != nil ||
       params[:organization_response_rating] != nil ||
@@ -57,7 +57,7 @@ class ExperianceController < ApplicationController
       @experiance.id = org_experiance.id
       @experiance.save
 
-      redirect '/expreriance/#{@experiance.id}'
+      redirect '/user_expreriance/#{@experiance.id}'
     end
 
   end
