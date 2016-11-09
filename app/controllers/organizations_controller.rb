@@ -22,7 +22,7 @@ class OrganizationController < ApplicationController
     end
   end
 
-  get '/organziations/:id/edit' do
+  get '/organizations/:id/edit' do
     @experiance = UserExperiance.find(params[:id])
     if logged_in? && @experiance.user_id == current_user.id
       erb :"/user_experiances/edit"
@@ -36,14 +36,6 @@ class OrganizationController < ApplicationController
     if logged_in? && @experiance.user_id == current_user.id
 
   end
-
-#post experiances new
-# "needs_met_rating"
-# "accessibility_rating"
-# "organization_response_rating"
-# "overall_experiance_rating"
-# "experiance_content"
-# "advice_content"
 
   post '/organizations/:id/new' do
     if (
@@ -61,10 +53,6 @@ class OrganizationController < ApplicationController
       experiance_content: params[:experiance_content],
       advice_content: params[:advice_content])
 
-      # org_experiance = OrganizationExperiance.new
-      # org_experiance.user_id =  current_user.id
-      # org_experiance.org_id = ##Organization.id
-
       @experiance.organization_id = @organization.id
       @experiance.user_id = current_user.id
       @experiance.save
@@ -72,7 +60,7 @@ class OrganizationController < ApplicationController
     end
   end
 
-  patch '/user_experiance/:id/edit' do
+  patch '/organizations/:id/edit' do
     if logged_in? && @experiance.user_id == current_user.id
       @experiance = UserExperiance.find(params [:id])
       @experiance.update(
