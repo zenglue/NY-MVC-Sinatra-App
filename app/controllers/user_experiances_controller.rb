@@ -39,13 +39,16 @@ class UserExperianceController < ApplicationController
 # "advice_content"
 
   post '/user_experiances/new' do
-    if (params[:needs_met_rating] != nil ||
+    if (
+      params[:needs_met_rating] != nil ||
       params[:accessibilty_rating] != nil ||
       params[:organization_response_rating] != nil ||
       !params[:experiance_content].empty? ||
       !params[:advice_content].empty?)
 
-      @experiance = UserExperiance.new(neeeds_met_rating: params[:needs_met_rating],
+      @organization = Organization.find(params[:id])
+      @experiance = UserExperiance.new(
+      neeeds_met_rating: params[:needs_met_rating],
       accessibilty_rating: params[:accessibilty_rating],
       organization_response_rating: params[:organization_response_rating],
       experiance_content: params[:experiance_content],
@@ -54,12 +57,11 @@ class UserExperianceController < ApplicationController
       # org_experiance = OrganizationExperiance.new
       # org_experiance.user_id =  current_user.id
       # org_experiance.org_id = ##Organization.id
-      @experiance.id = org_experiance.id
+      @experiance.organization_id = @organization.id
+      @experiance.user_id = current_user.id
       @experiance.save
-
       redirect '/user_expreriance/#{@experiance.id}'
     end
-
   end
 
 #patch experiances/:id/edit flash/action

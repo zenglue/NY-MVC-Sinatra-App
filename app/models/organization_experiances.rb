@@ -1,4 +1,4 @@
-class OrganizationExperiance < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :organization
-end
+# class OrganizationExperiance < ActiveRecord::Base
+#   belongs_to :user
+#   belongs_to :organization
+# end
