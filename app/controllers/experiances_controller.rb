@@ -1,4 +1,4 @@
-class ExperiancesController < ApplicationController
+class ExperianceController < ApplicationController
 
   get '/experiances/new' do
     if logged_in?

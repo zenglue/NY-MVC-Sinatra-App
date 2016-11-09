@@ -1,10 +1,3 @@
-<ul>
-  <li><% @organizations.each do |organization| %>
-  <a href="/organizations/#{organization.id}">
-  <% organization.experiances.count.sort_by.reverse! do |a| %>
-  <%= a[:count].name %></a></br>
-  Number of Personal Experiances with the organization: <%= organization.experiances.count %>
-  </li>
-</ul>
-<% end %>
+<% @organizations.each do |organization| %>
+  <li><a href="/organizations/#{organization.id}"><%= organization.name %></a></li></br>
 <% end %>

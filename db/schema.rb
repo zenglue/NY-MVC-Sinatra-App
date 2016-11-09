@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161108180602) do
 
-  create_table "organization_experiances", force: :cascade do |t|
+  create_table "organization_experiences", force: :cascade do |t|
     t.integer "oganization_id"
     t.integer "user_id"
   end
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20161108180602) do
     t.string "city"
   end
 
-  create_table "user_experiances", force: :cascade do |t|
+  create_table "user_experiences", force: :cascade do |t|
     t.integer "needs_met_rating"
     t.integer "accessibility_rating"
     t.integer "organization_response_rating"
-    t.integer "overall_experiance_rating"
-    t.string  "experiance_content"
+    t.integer "overall_experience_rating"
+    t.string  "experience_content"
     t.string  "advice_content"
   end
 
