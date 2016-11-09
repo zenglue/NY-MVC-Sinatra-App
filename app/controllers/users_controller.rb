@@ -32,9 +32,9 @@ class UserController < ApplicationController
       redirect "/signup"
 
     else
-      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       sesssion[:id] = @user.id
-      @user.save
+      # @user.save
       #flash notice[:session] "Account successfuly created!"
       redirect "/organizations"
     end
