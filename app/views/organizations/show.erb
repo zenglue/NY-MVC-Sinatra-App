@@ -1,13 +1,11 @@
 <h1 align='center'><%= @organization.name %></h1>
 <h2 align='center'><%= @organization.contact_info %></h2>
-<ul>
+
   <!-- Don't want to access Model directly in the HTML consider passing an instance variable to these template -->
 
-  <li><% UserExperience.all.each do |experience| %>
+    <% @experiences.all.each do |experience| %>
     <% if experience.organization_id = @organization.id %>
-    <%= experience.user.username %>: <%= experience.advice_content %>  <%= experience.experience_content %><br/>
-  </li>
-</ul>
+  <li><%= experience.user.username %>: <%= experience.advice_content %>  <%= experience.experience_content %><br></br></li>
 <% end %>
 <% end %>
 <br>

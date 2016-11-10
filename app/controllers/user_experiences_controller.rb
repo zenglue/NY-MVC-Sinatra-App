@@ -1,7 +1,8 @@
 
 class UserExperienceController < ApplicationController
 
-
+  get '/user_experiences' do
+  end
   get '/user_experiences/new' do
     if logged_in?
       erb :"/user_experiences/new"
@@ -53,9 +54,7 @@ class UserExperienceController < ApplicationController
       @experience.user_id = current_user.id
       @experience.save
       redirect '/organizations/#{@experience.organization_id}'
-
     end
-          binding.pry
   end
 
   patch '/user_experiences/:id/edit' do
