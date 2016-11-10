@@ -8,6 +8,7 @@ class OrganizationController < ApplicationController
   get '/organizations/:id' do
     @organization = Organization.find(params[:id])
     @experiences = UserExperience.all
+    @user = current_user.slug
     erb :"/organizations/show"
   end
 end

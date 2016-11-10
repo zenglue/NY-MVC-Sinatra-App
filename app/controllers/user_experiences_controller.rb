@@ -57,13 +57,13 @@ class UserExperienceController < ApplicationController
   end
 
   patch '/user_experiences/:id/edit' do
+    @experience = UserExperience.find(params[:id])
     if logged_in? && @experience.user_id == current_user.id
-      @experience = UserExperience.find(params[:id])
       @experience.update(
       needs_met_rating: params[:needs_met_rating],
       accessibility_rating: params[:accessibilty_rating],
       organization_response_rating: params[:organization_response_rating],
-      experience: params[:experience_content],
+      experience_content: params[:experience_content],
       advice_content: params[:advice_content])
       #flash session update sucessful
       redirect '/organizations'
