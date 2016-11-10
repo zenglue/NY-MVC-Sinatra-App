@@ -50,7 +50,8 @@ class UserExperienceController < ApplicationController
       @experience.organization_id = params[:organization_id]
       @experience.user_id = current_user.id
       @experience.save
-      redirect '/user_experiences/#{@experience.id}'
+      redirect '/organizations'
+      # redirect '/user_experiences/#{@experience.id}'
     else
       redirect '/organizations'
     end

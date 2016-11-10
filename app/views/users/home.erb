@@ -2,3 +2,29 @@
 #shows all orgs commented on
 #link to experiances show page
 #link to cities/org index -->
+
+<h2 align='center'>All Your Comments:</h2>
+  <% @experiences.each do |experience|%>
+  <% if experience.user_id == @user.id %>
+  <li><label><%= experience.organization.name %></label>
+    <br></br>
+    <label>Advice: </label>
+    <br>
+    <%= experience.advice_content %>
+    <br></br>
+    <label>Experience: </label>
+    <br>
+    <%= experience.experience_content %>
+    <br></br>
+    <a href='/user_experiences/<%=experience.id%>/edit'>Edit Comment</a><br><br/>
+    <form action='/user_experiences/<%=experience.id%>/delete' method='post'>
+      <input id='hidden' type='hidden' name='_method' value='delete'>
+      <button type='submit' value='delete'>Delete</button><br><br/>
+    </form>
+  </li>
+  <% end %>
+  <% end %>
+  <br></br>
+  <a href='/organizations'>Organization List</a>
+  <br></br>
+  <a href='/logout'>Logout</a>
