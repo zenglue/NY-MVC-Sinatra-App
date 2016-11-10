@@ -2,6 +2,7 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
+      #flash already logged_in
       redirect "/organizations"
     else
       erb :"/users/signup"
@@ -36,6 +37,7 @@ class UserController < ApplicationController
       redirect "/signup"
 
     else
+      #User.new can be nested name[:att_hash]
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       @user.save
       session[:id] = @user.id
@@ -45,10 +47,12 @@ class UserController < ApplicationController
   end
 
   post '/login' do
+    #hidden input tag to store 'if' for redirect
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
       redirect "/organizations"
+      # redirect "/organizations/:id"
     else
       #flash notice[:session] "Wrong username or password"
       redirect "/login"

@@ -5,7 +5,7 @@ class UserExperienceController < ApplicationController
       erb :"/user_experiences/new"
     else
       #add session error message
-      redirect '/users/login'
+      redirect "/users/login"
     end
   end
 
@@ -15,7 +15,7 @@ class UserExperienceController < ApplicationController
       erb :"/user_experiences/show"
     else
       #add session error message
-      redirect '/users/login'
+      redirect "/users/login"
     end
   end
 
@@ -25,11 +25,12 @@ class UserExperienceController < ApplicationController
       erb :"/user_experiences/edit"
     else
       #add session error message
-      redirect '/users/login'
+      erb :"/users/login"
     end
   end
 
   post '/user_experiences/new' do
+    #refector and nest UserExperience.new
 
     if (
       params[:needs_met_rating] != nil ||
@@ -50,14 +51,14 @@ class UserExperienceController < ApplicationController
       @experience.save
       redirect "/user_experiences/#{@experience.id}"
     else
-      redirect "/organizations"
+      redirect "/organizations/:id"
     end
   end
 
   patch '/user_experiences/:id/edit' do
     @experience = UserExperience.find(params[:id])
-    params[:slug] = current_user.slug
     if logged_in? && @experience.user_id == current_user.id
+      params[:slug] = current_user.slug
       #deletes all content on update
       @experience.update(
       needs_met_rating: params[:needs_met_rating],
@@ -66,22 +67,22 @@ class UserExperienceController < ApplicationController
       experience_content: params[:experience_content],
       advice_content: params[:advice_content])
       #flash session update sucessful
-      redirect to "/users/#{params[:slug]}"
+      redirect "/users/#{params[:slug]}"
     else
       #flash session error message
-      redirect "/login"
+      redirect "/"
     end
   end
 
   delete '/user_experiences/:id/delete' do
     @experience = UserExperience.find(params[:id])
-    params[:slug] = current_user.slug
     if logged_in? && @experience.user_id == current_user.id
+      params[:slug] = current_user.slug
       @experience.destroy
       redirect "/users/#{params[:slug]}"
     else
       #flash session not logged_in message
-      redirect "/organizations"
+      redirect "/"
     end
   end
 end
