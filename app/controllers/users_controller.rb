@@ -10,8 +10,10 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect "/organizations"
+      binding.pry
+      redirect "/users/:slug"
     else
+      #flash check your username or password
       erb :"/users/login"
     end
   end
@@ -20,7 +22,7 @@ class UserController < ApplicationController
 
     session.clear
     #flash logged out
-    redirect 'home'
+    redirect :'/'
   end
 
   get '/users/:slug' do

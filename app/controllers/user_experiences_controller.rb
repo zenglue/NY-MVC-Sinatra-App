@@ -1,8 +1,5 @@
-
 class UserExperienceController < ApplicationController
 
-  get '/user_experiences' do
-  end
   get '/user_experiences/new' do
     if logged_in?
       erb :"/user_experiences/new"
@@ -53,7 +50,9 @@ class UserExperienceController < ApplicationController
       @experience.organization_id = params[:organization_id]
       @experience.user_id = current_user.id
       @experience.save
-      redirect '/organizations/#{@experience.organization_id}'
+      redirect '/user_experiences/#{@experience.id}'
+    else
+      redirect '/organizations'
     end
   end
 
@@ -67,10 +66,10 @@ class UserExperienceController < ApplicationController
       experience: params[:experience_content],
       advice_content: params[:advice_content])
       #flash session update sucessful
-      redirect "/organizations"
+      redirect '/organizations'
     else
       #flash session error message
-      redirect "/login"
+      redirect '/login'
     end
   end
 
@@ -78,12 +77,10 @@ class UserExperienceController < ApplicationController
     @experience = Experience.find(params[:id])
     if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
-      redirect "/organizations"
+      redirect '/organizations'
     else
       #flash session not logged_in message
-      redirect "/organizations"
+      redirect '/organizations'
     end
-
   end
-
 end
