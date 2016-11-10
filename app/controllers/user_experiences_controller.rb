@@ -32,7 +32,7 @@ class UserExperienceController < ApplicationController
   post '/user_experiences/new' do
     #refector and nest UserExperience.new
 
-    if (
+    if logged_in? && (
       params[:needs_met_rating] != nil ||
       params[:accessibilty_rating] != nil ||
       params[:organization_response_rating] != nil ||
@@ -51,7 +51,7 @@ class UserExperienceController < ApplicationController
       @experience.save
       redirect "/user_experiences/#{@experience.id}"
     else
-      redirect "/organizations/:id"
+      redirect "/organizations/#{params[:organization_id]}"
     end
   end
 

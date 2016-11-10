@@ -4,7 +4,7 @@
   <!-- Don't want to access Model directly in the HTML consider passing an instance variable to these template -->
   <% @experiences.all.each do |experience| %>
   <% if experience.organization_id = @organization.id %>
-  <li><label><%= experience.user.username %></label>
+  <li><label><%= experience.user_id %></label>
     <br>
     <label>Advice:</label><br>
     <%= experience.advice_content %>

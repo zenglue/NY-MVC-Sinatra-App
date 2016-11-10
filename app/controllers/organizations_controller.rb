@@ -6,11 +6,13 @@ class OrganizationController < ApplicationController
   end
 
   get '/organizations/:id' do
+    #debug
     @organization = Organization.find(params[:id])
     @experiences = UserExperience.all
-    if logged_in?
-      @user = current_user.slug
-    end
+    @user = User.all
+    # if logged_in?
+    #   @user = current_user.slug
+    # end
     erb :"/organizations/show"
   end
 end
