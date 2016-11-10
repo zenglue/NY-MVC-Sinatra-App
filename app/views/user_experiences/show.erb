@@ -1,7 +1,11 @@
-<%= @experience.organization.name %><br/>
-<%= @experience.advice_content %></br>
-<a href="/experiences/<%=@experiance.id%>/edit">Edit</a></br>
-<form action="/experiences/<%=@experiance.id%>/delete" method='post'>
+<%= @experience.organization.name %>:
+<br><br/>
+<%= @experience.experience_content %>
+<br><br/>
+<%= @experience.advice_content %>
+<br></br>
+<a href="/user_experiences/<%=@experience.id%>/edit">Edit</a></br>
+<form action="/user_experiences/<%=@experience.id%>/delete" method='post'>
   <input id='hidden' type='hidden' name='_method' value='delete'>
   <button type='submit' value='delete'>Delete</button>
 </form></br>

@@ -31,7 +31,7 @@ class UserExperienceController < ApplicationController
 
   post '/user_experiences/new' do
     #refector and nest UserExperience.new
-
+    #add anonymous posting?
     if logged_in? && (
       params[:needs_met_rating] != nil ||
       params[:accessibilty_rating] != nil ||

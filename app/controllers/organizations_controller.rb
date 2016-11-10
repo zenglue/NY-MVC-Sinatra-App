@@ -9,10 +9,8 @@ class OrganizationController < ApplicationController
     #debug
     @organization = Organization.find(params[:id])
     @experiences = UserExperience.all
-    @user = User.all
-    # if logged_in?
-    #   @user = current_user.slug
-    # end
+    # if !logged_in?
     erb :"/organizations/show"
+
   end
 end
