@@ -75,9 +75,10 @@ class UserExperienceController < ApplicationController
 
   delete '/user_experiences/:id/delete' do
     @experience = UserExperience.find(params[:id])
+    params[:slug] = current_user.slug
     if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
-      redirect "/organizations"
+      redirect "/users/#{params[:slug]}"
     else
       #flash session not logged_in message
       redirect "/organizations"
