@@ -1,8 +1,0 @@
-<%= @experiance.organization.name %><br/>
-<%= @experiance.content %></br>
-<a href="/experiances/<%=@experiance.id%>/edit">Edit</a></br>
-<form action="/experiances/<%=@experiance.id%>/delete" method='post'>
-  <input id='hidden' type='hidden' name='_method' value='delete'>
-  <button type='submit' value='delete'>Delete</button>
-</form></br>
-<a href="/organizations">All Organizations</a>

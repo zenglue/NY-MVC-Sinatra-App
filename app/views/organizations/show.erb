@@ -1,13 +1,24 @@
 <h1 align='center'><%= @organization.name %></h1>
 <h2 align='center'><%= @organization.contact_info %></h2>
 <ul>
-  <li><% UserExperiance.all.each do |experiance| %>
-    <% if experiance.ogranization_id = @organization.id %>
-    <%= experiance.user.username %>: <%= experiance.content %>
+  <!-- Don't want to access Model directly in the HTML consider passing an instance variable to these template -->
+
+  <li><% UserExperience.all.each do |experience| %>
+    <% if experience.organization_id = @organization.id %>
+    <%= experience.user.username %>: <%= experience.advice_content %>  <%= experience.experience_content %><br/>
   </li>
 </ul>
 <% end %>
 <% end %>
 <br>
 <br><br/>
-<a href='/user_experiances/new'>Add a new experiance</a>
+<h1>Personal experience and ratings with Organization</h1>
+
+<form action='/user_experiences/new' method='post'>
+  <input name="organization_id" type="hidden" value="<%= @organization.id %>">
+  <label>Your Personal Experience with the organization:</label></br>
+  <textarea name='experience_content' rows='10' cols='50'></textarea><br><br/>
+  <label>Advice for someone reaching out to the organization:</label></br>
+  <textarea name='advice_content' rows='10' cols='50'></textarea><br/>
+  <button type='submit' value='submit'>Submit</button>
+</form>

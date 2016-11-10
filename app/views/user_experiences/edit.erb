@@ -1,6 +1,6 @@
-<form action="/experiances/<%=@experiance.id%>/edit" method='post'>
+<form action="/experiences/<%=@experience.id%>/edit" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
-  <input type='text' name='content' value='<%=@experiance.experiance_content%>'><br/>
+  <input type='text' name='content' value='<%=@experiance.experience_content%>'><br/>
   <input type='text' name='content' value='<%=@experiance.advice_content%>'><br/>
   <button type='submit' value='submit'>Submit</button>
 </form>

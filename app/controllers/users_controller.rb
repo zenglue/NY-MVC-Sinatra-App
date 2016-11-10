@@ -2,8 +2,8 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-    #   redirect "/organizations"
-    # else
+      redirect "/organizations"
+    else
       erb :"/users/signup"
     end
   end
@@ -17,8 +17,10 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
+
     session.clear
-    redirect "login"
+    #flash logged out
+    redirect 'home'
   end
 
   get '/users/:slug' do
@@ -33,7 +35,7 @@ class UserController < ApplicationController
 
     else
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-      sesssion[:id] = @user.id
+      session[:id] = @user.id
       # @user.save
       #flash notice[:session] "Account successfuly created!"
       redirect "/organizations"
@@ -41,6 +43,7 @@ class UserController < ApplicationController
   end
 
   post '/login' do
+    binding.pry
     @user = User.find(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id

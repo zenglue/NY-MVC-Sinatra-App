@@ -8,7 +8,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use UserExperianceController
+use UserExperienceController
 use OrganizationController
 use UserController
 run ApplicationController
