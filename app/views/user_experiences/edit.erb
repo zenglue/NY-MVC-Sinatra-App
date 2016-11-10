@@ -3,8 +3,7 @@
 <br>
 <br>
 <br>
-<br>
-<form action="/experiences/<%=@experience.id%>/edit" method='post'>
+<form action="/user_experiences/<%=@experience.id%>/edit" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
   <label>Experience:</label><br/>
   <input type='text' name='content' value='<%=@experience.experience_content%>'><br><br>

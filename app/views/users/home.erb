@@ -1,8 +1,3 @@
-<!-- #shows all experiances
-#shows all orgs commented on
-#link to experiances show page
-#link to cities/org index -->
-
 <h2 align='center'>All Your Comments:</h2>
   <% @experiences.each do |experience|%>
   <% if experience.user_id == @user.id %>

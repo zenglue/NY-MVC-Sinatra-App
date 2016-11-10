@@ -10,7 +10,8 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect "/users/home"
+      params[:slug] = current_user.slug
+      redirect "/users/:slug"
     else
       #flash check your username or password
       erb :"/users/login"
@@ -18,10 +19,9 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
-
     session.clear
     #flash logged out
-    redirect :'/'
+    redirect "/"
   end
 
   get '/users/:slug' do
@@ -45,7 +45,6 @@ class UserController < ApplicationController
   end
 
   post '/login' do
-
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id

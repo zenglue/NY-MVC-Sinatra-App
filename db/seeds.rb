@@ -31,4 +31,4 @@ organization_list.each do |name, organization_hash|
   o.save
 end
 
-#how does it know the first attribute is name?  is this a rake thing?
+#how does it know the first attribute is name?  

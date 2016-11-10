@@ -2,12 +2,20 @@
 <h2 align='center'><%= @organization.contact_info %></h2>
 
   <!-- Don't want to access Model directly in the HTML consider passing an instance variable to these template -->
-
-    <% @experiences.all.each do |experience| %>
-    <% if experience.organization_id = @organization.id %>
-  <li><%= experience.user.username %>: <%= experience.advice_content %>  <%= experience.experience_content %><br></br></li>
+  <% @experiences.all.each do |experience| %>
+  <% if experience.organization_id = @organization.id %>
+  <li><label><%= experience.user.username %></label>
+    <br>
+    <label>Advice:</label><br>
+    <%= experience.advice_content %>
+    <br><br/>
+    <label>Experience:</label><br>
+    <%= experience.experience_content %>
+    <br><br/>
+  </li>
 <% end %>
 <% end %>
+<!-- rule for ends in erb? -->
 <br>
 <br><br/>
 <h1>Personal experience with Organization</h1>

@@ -4,7 +4,7 @@ class UserExperienceController < ApplicationController
     if logged_in?
       erb :"/user_experiences/new"
     else
-#add session error message
+      #add session error message
       redirect '/users/login'
     end
   end
@@ -14,7 +14,7 @@ class UserExperienceController < ApplicationController
       @experience = UserExperience.find(params[:id])
       erb :"/user_experiences/show"
     else
-#add session error message
+      #add session error message
       redirect '/users/login'
     end
   end
@@ -24,12 +24,10 @@ class UserExperienceController < ApplicationController
     if logged_in? && @experience.user_id == current_user.id
       erb :"/user_experiences/edit"
     else
-#add session error message
+      #add session error message
       redirect '/users/login'
     end
   end
-
-
 
   post '/user_experiences/new' do
 
@@ -50,16 +48,17 @@ class UserExperienceController < ApplicationController
       @experience.organization_id = params[:organization_id]
       @experience.user_id = current_user.id
       @experience.save
-      redirect '/organizations'
-      # redirect '/user_experiences/#{@experience.id}'
+      redirect "/user_experiences/#{@experience.id}"
     else
-      redirect '/organizations'
+      redirect "/organizations"
     end
   end
 
   patch '/user_experiences/:id/edit' do
     @experience = UserExperience.find(params[:id])
+    params[:slug] = current_user.slug
     if logged_in? && @experience.user_id == current_user.id
+      #deletes all content on update
       @experience.update(
       needs_met_rating: params[:needs_met_rating],
       accessibility_rating: params[:accessibilty_rating],
@@ -67,10 +66,10 @@ class UserExperienceController < ApplicationController
       experience_content: params[:experience_content],
       advice_content: params[:advice_content])
       #flash session update sucessful
-      redirect '/organizations'
+      redirect to "/users/#{params[:slug]}"
     else
       #flash session error message
-      redirect '/login'
+      redirect "/login"
     end
   end
 
@@ -78,10 +77,10 @@ class UserExperienceController < ApplicationController
     @experience = UserExperience.find(params[:id])
     if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
-      redirect '/organizations'
+      redirect "/organizations"
     else
       #flash session not logged_in message
-      redirect '/organizations'
+      redirect "/organizations"
     end
   end
 end

@@ -1,5 +1,5 @@
 <%= @experience.organization.name %><br/>
-<%= @experience.content %></br>
+<%= @experience.advice_content %></br>
 <a href="/experiences/<%=@experiance.id%>/edit">Edit</a></br>
 <form action="/experiences/<%=@experiance.id%>/delete" method='post'>
   <input id='hidden' type='hidden' name='_method' value='delete'>
