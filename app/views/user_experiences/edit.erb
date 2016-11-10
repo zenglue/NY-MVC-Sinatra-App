@@ -1,6 +1,14 @@
+<h1 align='center'>Edit your experience</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
 <form action="/experiences/<%=@experience.id%>/edit" method='post'>
   <input id='hidden' type='hidden' name='_method' value='patch'>
-  <input type='text' name='content' value='<%=@experiance.experience_content%>'><br/>
-  <input type='text' name='content' value='<%=@experiance.advice_content%>'><br/>
+  <label>Experience:</label><br/>
+  <input type='text' name='content' value='<%=@experience.experience_content%>'><br><br>
+  <label>Advice:</label><br/>
+  <input type='text' name='content' value='<%=@experience.advice_content%>'><br><br/>
   <button type='submit' value='submit'>Submit</button>
 </form>
