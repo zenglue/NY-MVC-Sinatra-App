@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :user_experiences
   has_many :organizations, through: :user_experiances
 
+  has_secure_password
+
   def slug
     self.username.strip.downcase.gsub(" ", "-")
   end
