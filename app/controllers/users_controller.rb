@@ -11,8 +11,7 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
-      params[:slug] = current_user.slug
-      redirect "/users/#{params[:slug]}"
+      redirect "/users/#{current_user.slug]}"
     else
       erb :"/users/login"
     end
@@ -47,8 +46,7 @@ class UserController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      params[:slug] = current_user.slug
-      redirect "/users/#{params[:slug]}"
+      redirect "/users/#{current_user.slug}"
     else
       #flash notice[:session] "Wrong username or password"
       redirect "/login"

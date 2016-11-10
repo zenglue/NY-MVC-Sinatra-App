@@ -11,6 +11,5 @@ class OrganizationController < ApplicationController
     @experiences = UserExperience.all
     # if !logged_in?
     erb :"/organizations/show"
-
   end
 end
