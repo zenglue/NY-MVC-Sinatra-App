@@ -75,7 +75,7 @@ class UserExperienceController < ApplicationController
   end
 
   delete '/user_experiences/:id/delete' do
-    @experience = Experience.find(params[:id])
+    @experience = UserExperience.find(params[:id])
     if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
       redirect '/organizations'

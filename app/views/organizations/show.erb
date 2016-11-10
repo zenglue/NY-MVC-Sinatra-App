@@ -10,17 +10,16 @@
 <% end %>
 <br>
 <br><br/>
-<h1>Personal experience and ratings with Organization</h1>
+<h1>Personal experience with Organization</h1>
 
 <form action='/user_experiences/new' method='post'>
   <input name="organization_id" type="hidden" value="<%= @organization.id %>">
   <label>Your Personal Experience with the organization:</label></br>
   <textarea name='experience_content' rows='10' cols='50'></textarea><br><br/>
-  <label>Advice for someone reaching out to the organization:</label></br>
+  <label>Advice for anyone reaching out to the organization:</label></br>
   <textarea name='advice_content' rows='10' cols='50'></textarea><br/>
   <button type='submit' value='submit'>Submit</button>
 </form>
 <br><br/>
 <a href="/users/<%=@user%>">Edit Your Comments</a>
 <br><br/>
-<a href="/logout">Logout</a>
