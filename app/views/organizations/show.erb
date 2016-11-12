@@ -1,7 +1,5 @@
 <h1 align='center'><%= @organization.name %></h1>
 <h2 align='center'><%= @organization.contact_info %></h2>
-
-  <!-- Don't want to access Model directly in the HTML consider passing an instance variable to these template -->
   <% @experiences.each do |experience| %>
   <% if experience.organization_id = @organization.id %>
   <li><label><%= experience.user.username%></label>
@@ -15,7 +13,6 @@
   </li>
 <% end %>
 <% end %>
-<!-- rule for ends in erb? -->
 <br>
 <br><br/>
 <h1>Personal experience with Organization</h1>
@@ -29,6 +26,5 @@
   <button type='submit' value='submit'>Submit</button>
 </form>
 <br><br/>
-<!-- #fix link for anonymous users -->
 <a href="/users/<%=@user%>">Edit Your Comments</a>
 <br><br/>
