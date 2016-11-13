@@ -3,11 +3,11 @@
 <br>
 <br>
 <br>
-<form action="/user_experiences/<%=@experience.id%>/edit" method='post'>
-  <input id='hidden' type='hidden' name='_method' value='patch'>
+<form action="/user_experiences/<%=@experience.id%>" method='post'>
+  <input type='hidden' name='_method' value='patch'>
   <label>Experience:</label><br/>
-  <input type='text' name='content' value='<%=@experience.experience_content%>'><br><br>
+  <input type='text' name='experience_content' id='experience_content' value='<%=@experience.experience_content%>'><br><br>
   <label>Advice:</label><br/>
-  <input type='text' name='content' value='<%=@experience.advice_content%>'><br><br/>
-  <button type='submit' value='submit'>Submit</button>
+  <input type='text' name='advice_content' id='advice_content' value='<%=@experience.advice_content%>'><br><br/>
+  <input type='submit' value='Save'>
 </form>

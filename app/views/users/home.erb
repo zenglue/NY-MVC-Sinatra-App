@@ -12,7 +12,7 @@
     <%= experience.advice_content %>
     <br></br>
     <a href='/user_experiences/<%=experience.id%>/edit'>Edit Comment</a><br><br/>
-    <form action='/user_experiences/<%=experience.id%>/delete' method='post'>
+    <form action='/user_experiences/<%=experience.id%>' method='post'>
       <input id='hidden' type='hidden' name='_method' value='delete'>
       <button type='submit' value='delete'>Delete</button><br><br/>
     </form>

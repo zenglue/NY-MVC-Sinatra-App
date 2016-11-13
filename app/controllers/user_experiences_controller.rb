@@ -45,19 +45,15 @@ class UserExperienceController < ApplicationController
     end
   end
 
-  patch '/user_experiences/:id/edit' do
+  patch '/user_experiences/:id' do
     @experience = UserExperience.find(params[:id])
-    if logged_in? && @experience.user_id == current_user.id
-      @experience.update(
-      experience_content: params[:experience_content],
-      advice_content: params[:advice_content])
-      redirect "/users/#{current_user.slug}"
-    else
-      redirect "/"
-    end
+    @experience.update(
+    experience_content: params[:experience_content],
+    advice_content: params[:advice_content])
+    redirect "/users/#{current_user.slug}"
   end
 
-  delete '/user_experiences/:id/delete' do
+  delete '/user_experiences/:id' do
     @experience = UserExperience.find(params[:id])
     if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
