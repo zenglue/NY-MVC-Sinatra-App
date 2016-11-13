@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110044057) do
+ActiveRecord::Schema.define(version: 20161113172113) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
@@ -20,10 +20,6 @@ ActiveRecord::Schema.define(version: 20161110044057) do
   end
 
   create_table "user_experiences", force: :cascade do |t|
-    t.integer "needs_met_rating"
-    t.integer "accessibility_rating"
-    t.integer "organization_response_rating"
-    t.integer "overall_experience_rating"
     t.string  "experience_content"
     t.string  "advice_content"
     t.integer "user_id"

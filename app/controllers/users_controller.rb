@@ -2,7 +2,6 @@ class UserController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      #flash already logged_in
       redirect "/organizations"
     else
       erb :"/users/signup"
@@ -11,6 +10,7 @@ class UserController < ApplicationController
 
   get '/login' do
     if logged_in?
+      flash[:message] = "Already Logged in!"
       redirect "/users/#{current_user.slug}"
     else
       erb :"/users/login"
@@ -19,7 +19,6 @@ class UserController < ApplicationController
 
   get '/logout' do
     session.clear
-    #flash logged out
     redirect "/"
   end
 
@@ -35,13 +34,11 @@ class UserController < ApplicationController
 
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
-      #flash notice[:session] "All fields must be filled"
       redirect "/signup"
     else
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       @user.save
       session[:id] = @user.id
-      #flash notice[:session] "Account successfuly created!"
       redirect "/organizations"
     end
   end
@@ -52,7 +49,6 @@ class UserController < ApplicationController
       session[:id] = @user.id
       redirect "/users/#{current_user.slug}"
     else
-      #flash notice[:session] "Wrong username or password"
       redirect "/login"
     end
   end

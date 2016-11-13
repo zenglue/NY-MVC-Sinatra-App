@@ -13,5 +13,4 @@ gem 'bcrypt'
 gem "tux"
 gem 'capybara'
 gem 'rack-test'
-gem 'rack-flash3'
 gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'

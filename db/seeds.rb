@@ -30,5 +30,3 @@ organization_list.each do |name, organization_hash|
   end
   o.save
 end
-
-#how does it know the first attribute is name?  
