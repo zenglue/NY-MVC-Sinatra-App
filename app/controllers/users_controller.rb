@@ -25,7 +25,7 @@ class UserController < ApplicationController
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     @experiences = UserExperience.all
-    if @user
+    if @user && logged_in?
       erb :"/users/home"
     else
       redirect "/login"

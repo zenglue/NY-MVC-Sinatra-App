@@ -4,7 +4,6 @@ class UserExperienceController < ApplicationController
     if logged_in?
       erb :"/user_experiences/new"
     else
-      flash[:error] = "User not logged in."
       redirect "/users/login"
     end
   end
@@ -55,11 +54,7 @@ class UserExperienceController < ApplicationController
 
   delete '/user_experiences/:id' do
     @experience = UserExperience.find(params[:id])
-    if logged_in? && @experience.user_id == current_user.id
-      @experience.destroy
-      redirect "/users/#{current_user.slug}"
-    else
-      redirect "/"
-    end
+    @experience.destroy
+    redirect "/users/#{current_user.slug}"
   end
 end
