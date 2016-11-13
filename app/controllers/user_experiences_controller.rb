@@ -5,6 +5,7 @@ class UserExperienceController < ApplicationController
       erb :"/user_experiences/new"
     else
       #add session error message
+      flash[:error] = "User not logged in."
       redirect "/users/login"
     end
   end
@@ -22,7 +23,6 @@ class UserExperienceController < ApplicationController
   get '/user_experiences/:id/edit' do
     @experience = UserExperience.find(params[:id])
     if logged_in?
-      # && @experience.user_id == current_user.id
       erb :"/user_experiences/edit"
     else
       #add session error message
@@ -58,8 +58,7 @@ class UserExperienceController < ApplicationController
 
   patch '/user_experiences/:id/edit' do
     @experience = UserExperience.find(params[:id])
-    if logged_in?
-      # && @experience.user_id == current_user.id
+    if logged_in? && @experience.user_id == current_user.id
       #deletes all content on update
       @experience.update(
       needs_met_rating: params[:needs_met_rating],
@@ -77,8 +76,7 @@ class UserExperienceController < ApplicationController
 
   delete '/user_experiences/:id/delete' do
     @experience = UserExperience.find(params[:id])
-    if logged_in?
-      # && @experience.user_id == current_user.id
+    if logged_in? && @experience.user_id == current_user.id
       @experience.destroy
       redirect "/users/#{current_user.slug}"
     else

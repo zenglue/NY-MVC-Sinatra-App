@@ -6,10 +6,8 @@ class OrganizationController < ApplicationController
   end
 
   get '/organizations/:id' do
-    #debug
     @organization = Organization.find(params[:id])
     @experiences = UserExperience.all
-    # if !logged_in?
     erb :"/organizations/show"
   end
 end

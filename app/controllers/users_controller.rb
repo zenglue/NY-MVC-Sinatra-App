@@ -26,7 +26,11 @@ class UserController < ApplicationController
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     @experiences = UserExperience.all
-    erb :"/users/home"
+    if @user
+      erb :"/users/home"
+    else
+      redirect "/login"
+    end
   end
 
   post '/signup' do

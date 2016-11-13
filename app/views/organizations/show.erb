@@ -15,8 +15,7 @@
 <% end %>
 <br>
 <br><br/>
-<h1>Personal experience with Organization</h1>
-
+<% if logged_in? %>
 <form action='/user_experiences/new' method='post'>
   <input name="organization_id" type="hidden" value="<%= @organization.id %>">
   <label>Your Personal Experience with the organization:</label></br>
@@ -26,5 +25,9 @@
   <button type='submit' value='submit'>Submit</button>
 </form>
 <br><br/>
-<a href="/users/<%=@user%>">Edit Your Comments</a>
+<a href="/users/<%=current_user.slug%>">Edit Your Comments</a>
 <br><br/>
+<% else %>
+<h2>To post a new comment:</h2>
+<a href="/login">Log In</a> or <a href="/signup">Sign Up</a>
+<% end %>
