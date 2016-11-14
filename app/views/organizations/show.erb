@@ -1,4 +1,6 @@
 <h1 align='center'><%= @organization.name %></h1>
+<h2 align='center'><%= @organization.city %></h2>
+<h2 align='center'><a href="http://<%=@organization.url%>"><%= @organization.url %></a></h2>
 <h2 align='center'><%= @organization.contact_info %></h2>
   <% @experiences.each do |experience| %>
   <% if experience.organization_id = @organization.id %>
