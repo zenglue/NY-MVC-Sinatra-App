@@ -22,7 +22,7 @@ class UserExperienceController < ApplicationController
     if logged_in? && @experience.user_id = current_user.id
       erb :"/user_experiences/edit"
     else
-      erb :"/login"
+      redirect "/login"
     end
   end
 
