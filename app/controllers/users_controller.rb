@@ -17,7 +17,7 @@ class UserController < ApplicationController
   end
 
   get '/logout' do
-    log_out
+    log_out!
     redirect "/"
   end
 
