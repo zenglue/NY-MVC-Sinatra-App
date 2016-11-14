@@ -4,7 +4,7 @@ class UserExperienceController < ApplicationController
     if logged_in?
       erb :"/user_experiences/new"
     else
-      redirect "/users/login"
+      redirect "/login"
     end
   end
 
@@ -13,7 +13,7 @@ class UserExperienceController < ApplicationController
       @experience = UserExperience.find(params[:id])
       erb :"/user_experiences/show"
     else
-      redirect "/users/login"
+      redirect "/login"
     end
   end
 
@@ -22,7 +22,7 @@ class UserExperienceController < ApplicationController
     if logged_in? && @experience.user_id = current_user.id
       erb :"/user_experiences/edit"
     else
-      erb :"/users/login"
+      erb :"/login"
     end
   end
 
