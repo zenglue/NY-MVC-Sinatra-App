@@ -5,8 +5,6 @@ class OrganizationController < ApplicationController
     erb :"/organizations/index"
   end
 
-  get 
-
   get '/organizations/:id' do
     @organization = Organization.find(params[:id])
     @experiences = UserExperience.all
