@@ -31,7 +31,7 @@ class UserExperienceController < ApplicationController
       !params[:experience_content].empty? ||
       !params[:advice_content].empty?)
 
-      @experience = UserExperience.create(
+      @experience = UserExperience.new(
       experience_content: params[:experience_content],
       advice_content: params[:advice_content])
 
