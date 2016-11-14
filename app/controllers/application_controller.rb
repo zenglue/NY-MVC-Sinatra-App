@@ -16,6 +16,10 @@ class ApplicationController < Sinatra::Base
       !!session[:id]
     end
 
+    def log_out
+      session.clear
+    end
+
     def current_user
       User.find(session[:id])
     end

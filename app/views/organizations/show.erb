@@ -3,7 +3,7 @@
 <h2 align='center'><a href="http://<%=@organization.url%>"><%= @organization.url %></a></h2>
 <h2 align='center'><%= @organization.contact_info %></h2>
   <% @experiences.each do |experience| %>
-  <% if experience.organization_id = @organization.id %>
+  <% if experience.organization_id == @organization.id %>
   <li><label><%= experience.user.username%></label>
     <br>
     <label>Experience:</label><br>
