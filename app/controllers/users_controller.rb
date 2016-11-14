@@ -4,7 +4,7 @@ class UserController < ApplicationController
     if logged_in?
       redirect "/organizations"
     else
-      erb :"/users/signup"
+      erb :"/users/new"
     end
   end
 

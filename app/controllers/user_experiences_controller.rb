@@ -19,7 +19,7 @@ class UserExperienceController < ApplicationController
 
   get '/user_experiences/:id/edit' do
     @experience = UserExperience.find(params[:id])
-    if logged_in?
+    if logged_in? && @experience.user_id = current_user.id
       erb :"/user_experiences/edit"
     else
       erb :"/users/login"
@@ -54,7 +54,11 @@ class UserExperienceController < ApplicationController
 
   delete '/user_experiences/:id' do
     @experience = UserExperience.find(params[:id])
-    @experience.destroy
-    redirect "/users/#{current_user.slug}"
+    if logged_in? && @experience.user_id = current_user.id
+      @experience.destroy
+      redirect "/users/#{current_user.slug}"
+    else
+      redirect "/login"
+    end
   end
 end
